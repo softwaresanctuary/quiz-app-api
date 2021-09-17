@@ -1,0 +1,24 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <script>
+            fetch("http://localhost:9001/quiz/list")
+                .then(response => {
+                    response.json().then(
+                        obj => {
+                            ele = document.getElementById("data")
+                            ele.innerHTML = JSON.stringify(obj, null, "\t")
+                        }
+                    )
+                })
+                .catch(error => {
+                    alert(error)
+                });
+        </script>
+    <pre id="data">
+
+    </pre>
+    </body>
+</html>
