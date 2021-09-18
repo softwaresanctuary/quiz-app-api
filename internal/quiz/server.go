@@ -3,14 +3,13 @@ package quiz
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/gokhantamkoc/quiz-app-api/api"
-	"github.com/gokhantamkoc/quiz-app-api/internal/common"
 )
 
 func Routes(engine *gin.Engine) {
 	qServer := &QuizServer{
 		Service: NewService(),
 	}
-	quiz := engine.Group("/quiz", common.CORSMiddleware())
+	quiz := engine.Group("/quiz")
 	quiz.POST("", qServer.CreateQuiz)
 	quiz.PUT("", qServer.UpdateQuiz)
 	quiz.GET("/:id", qServer.GetQuiz)
